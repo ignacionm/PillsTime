@@ -25,16 +25,16 @@ public class MainActivity extends AppCompatActivity  implements ActionBar.TabLis
         ActionBar actionBar = getSupportActionBar();
         actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
 
-        ActionBar.Tab tab = actionBar.newTab().setText("Alarmas").setTabListener(this);
+        ActionBar.Tab tab = actionBar.newTab().setIcon(getResources().getDrawable(R.drawable.alarm)).setTabListener(this);
         actionBar.addTab(tab);
 
-        tab = actionBar.newTab().setText("Historial").setTabListener(this);
+        tab = actionBar.newTab().setIcon(getResources().getDrawable(R.drawable.history)).setTabListener(this);
         actionBar.addTab(tab);
 
-        tab = actionBar.newTab().setText("Consejos").setTabListener(this);
+        tab = actionBar.newTab().setIcon(getResources().getDrawable(R.drawable.eco)).setTabListener(this);
         actionBar.addTab(tab);
 
-        tab = actionBar.newTab().setText("Compras").setTabListener(this);
+        tab = actionBar.newTab().setIcon(getResources().getDrawable(R.drawable.shop)).setTabListener(this);
         actionBar.addTab(tab);
     }
 
