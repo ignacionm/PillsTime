@@ -10,25 +10,25 @@ import android.database.sqlite.SQLiteOpenHelper;
 public class DBhelper extends SQLiteOpenHelper{
 
     // Informacion de la tabla
-    /*public static final String TABLE_LIBRO = "libros";
-    public static final String LIBRO_ID = "_id";
-    public static final String LIBRO_TITULO = "titulo";
-    public static final String LIBRO_AUTOR = "autor";
-    public static final String LIBRO_CALIFICACION = "calificacion";
-    public static final String LIBRO_DESCRIPCION = "descripcion";*/
+    public static final String TABLE_RECETA = "receta";
+    public static final String RECETA_ID = "_id";
+    public static final String RECETA_NOMBRE = "nombre";
+    public static final String RECETA_HORA = "hora";
+    public static final String RECETA_LAPSO = "lapso";
+    public static final String RECETA_DOSIS = "dosis";
 
     // informacion del a base de datos
     static final String DB_NAME = "DBPILLSTIME";
     static final int DB_VERSION = 1;
 
     // Informacion de la base de datos
-    /*private static final String CREATE_TABLE = "create table "
-            + TABLE_LIBRO + "(" + LIBRO_ID
+    private static final String CREATE_TABLE = "create table "
+            + TABLE_RECETA + "(" + RECETA_ID
             + " INTEGER PRIMARY KEY AUTOINCREMENT, "
-            + LIBRO_TITULO + " TEXT NOT NULL, "
-            + LIBRO_AUTOR+" TEXT NOT NULL, "
-            + LIBRO_CALIFICACION+" TEXT NOT NULL, "
-            + LIBRO_DESCRIPCION+" TEXT NOT NULL "+");";*/
+            + RECETA_NOMBRE + " TEXT NOT NULL, "
+            + RECETA_HORA+" TEXT NOT NULL, "
+            + RECETA_LAPSO+" TEXT NOT NULL, "
+            + RECETA_DOSIS+" TEXT NOT NULL "+");";
 
     public DBhelper(Context context){
         super(context, DB_NAME, null, DB_VERSION);
@@ -36,14 +36,14 @@ public class DBhelper extends SQLiteOpenHelper{
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        //db.execSQL(CREATE_TABLE);
+        db.execSQL(CREATE_TABLE);
 
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        //db.execSQL("DROP TABLE IF EXISTS " + TABLE_LIBRO);
-        //onCreate(db);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_RECETA);
+        onCreate(db);
 
     }
 }
