@@ -9,4 +9,12 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Historial"
         android:id="@+id/textView4" />
+
+    <ListView
+        android:layout_width="wrap_content"
+        android:layout_height="500dp"
+        android:id="@+id/listViewRecetas"
+
+        />
+
 </LinearLayout>
