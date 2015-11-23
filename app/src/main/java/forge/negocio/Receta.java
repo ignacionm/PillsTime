@@ -5,6 +5,7 @@ import java.io.Serializable;
 /**
  * Clase que se simula el comportamiento de una receta
  */
+@SuppressWarnings("serial")
 public class Receta implements Serializable{
     private String nombre;
     private String hora;
@@ -16,7 +17,7 @@ public class Receta implements Serializable{
     private String dosisCantidad;
     private String notas;
 
-    public Receta() {
+    public Receta(){
     }
 
     public Receta(String nombre, String hora, String minuto,

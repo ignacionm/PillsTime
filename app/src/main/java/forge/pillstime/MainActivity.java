@@ -12,12 +12,17 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TabHost;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import java.util.ArrayList;
+
 import forge.negocio.Receta;
 import forge.persistencia.DBhelper;
 import forge.persistencia.SQLControlador;
@@ -27,11 +32,14 @@ import forge.persistencia.SQLControlador;
  */
 public class MainActivity extends ActionBarActivity implements ActionBar.TabListener , ViewPager.OnPageChangeListener {
     private ViewPager mViewPager;
-    private EditText etNombre, etHorah, etHoram, etLapsod, etLapsoh, etLapsom, etDosis, etDosisCantidad, etNotas;
+
     private TabHost th;
-    private Button btnRGuardar, btnREditar, btnREliminar, read_bt, btnRBD;
+
+    private ImageButton btnAF;
     private SQLControlador dbconeccion;
     private ListView listaReceta;
+    private String data;
+    private ArrayList<String> nombres, horas;
 
 
     /**
@@ -48,10 +56,8 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
         dbconeccion = new SQLControlador(this);
         dbconeccion.abrirBaseDeDatos();
         //Se inicializan los botones para manejar la tabla receta
-        btnRGuardar = (Button) findViewById(R.id.btnGuardarReceta);
-        btnREditar = (Button) findViewById(R.id.btnEditarReceta);
-        btnREliminar = (Button) findViewById(R.id.btnEliminarReceta);
-        btnRBD = (Button) findViewById(R.id.btnBaseRecetas);
+        btnAF = (ImageButton) findViewById(R.id.btnAbrirFormulario);
+
 
         //Se crean los tabs de la aplicacion en donde se colocaran los fragments
         PagerAdapter adapter = new PagerAdapter(getSupportFragmentManager());
@@ -73,6 +79,26 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
 
         tab = actionBar.newTab().setIcon(getResources().getDrawable(R.drawable.shop)).setTabListener(this);
         actionBar.addTab(tab);
+
+/*
+        Cursor cursor = dbconeccion.leerDatosReceta();
+        nombres = new ArrayList<String>();
+        horas = new ArrayList<String>();
+        if (cursor.moveToFirst()){
+            while(!cursor.isAfterLast()){
+                 nombres.add(cursor.getString(cursor.getColumnIndex("nombre")));
+                 horas.add(cursor.getString(cursor.getColumnIndex("hora")));
+                // do what ever you want here
+                cursor.moveToNext();
+            }
+        }
+        cursor.close();
+        String arregloNombres[] = new String[nombres.size()];
+        arregloNombres = nombres.toArray(arregloNombres);
+        listaReceta = (ListView) findViewById(R.id.listViewFMReceta);
+        ArrayAdapter<String> adaptadorLista = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, arregloNombres);
+
+        listaReceta.setAdapter(adaptadorLista);*/
 
 
     }
@@ -111,119 +137,14 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
     }
 
     /**
-     * Metodo onClick del boton base de datos, que te lleva a la actividad donde se podra obsevar
-     * los datos de la tabla Receta.
+     * Metodo onClick que lleva a la actividad con el formulario para el menjo de recetas
      * @param view
      */
-    public void onClickVoyBaseReceta(View view){
-        Intent i = new Intent(this, RecetaBaseDatos.class);
+    public void onClickAbrirFormularioRecetas(View view){
+        Intent i = new Intent(this, FormularioRecetas.class);
         startActivity(i);
     }
 
-    /**
-     * Metodo onClick del boton Guardar donde se cuardara una Receta
-     * @param v
-     */
-    public void onClickGuardar(View v){
-        Receta receta;
-        Intent refrescar;
-        Context context;
-        CharSequence text;
-        int duration;
-        Toast toast;
 
-        //Declaracion de componentes para agregar
-        etNombre = (EditText) findViewById(R.id.etRNombre);
-        etHorah = (EditText) findViewById(R.id.etRHorah);
-        etHoram = (EditText) findViewById(R.id.etRHoram);
-        etLapsod = (EditText) findViewById(R.id.etRLapsoDias);
-        etLapsoh = (EditText) findViewById(R.id.etRLapsoHora);
-        etLapsom = (EditText) findViewById(R.id.etRLapsoMinuto);
-        etDosis = (EditText) findViewById(R.id.etRDosis);
-        etDosisCantidad= (EditText) findViewById(R.id.etRDosisCantidad);
-        etNotas = (EditText) findViewById(R.id.etRNotas);
-        receta = new Receta(etNombre.getText().toString(),etHorah.getText().toString(), etHoram.getText().toString(),
-                etLapsod.getText().toString(),etLapsoh.getText().toString(), etLapsom.getText().toString(),
-                etDosis.getText().toString(), etDosisCantidad.getText().toString(),etNotas.getText().toString());
-
-        dbconeccion.insertarDatosReceta(receta);
-        //Mensaje que avisa que se agrego una Receta
-        context = getApplicationContext();
-        text = "Haz agregado una Receta";
-        duration = Toast.LENGTH_SHORT;
-        toast = Toast.makeText(context, text, duration);
-        toast.show();
-        //Se refresca la actividad
-        refrescar = new Intent(this, MainActivity.class);
-        startActivity(refrescar);
-        this.finish(); //
-    }
-
-    /**
-     * Metodo onClick del boton editar donde se actulizara un elemento de la tabla Receta
-     * @param v
-     */
-    public void onClickEditar(View v){
-        Receta receta;
-        Intent refrescar;
-        Context context;
-        CharSequence text;
-        int duration;
-        Toast toast;
-        etNombre = (EditText) findViewById(R.id.etRNombre);
-        etHorah = (EditText) findViewById(R.id.etRHorah);
-        etHoram = (EditText) findViewById(R.id.etRHoram);
-        etLapsod = (EditText) findViewById(R.id.etRLapsoDias);
-        etLapsoh = (EditText) findViewById(R.id.etRLapsoHora);
-        etLapsom = (EditText) findViewById(R.id.etRLapsoMinuto);
-        etDosis = (EditText) findViewById(R.id.etRDosis);
-        etDosisCantidad= (EditText) findViewById(R.id.etRDosisCantidad);
-        etNotas = (EditText) findViewById(R.id.etRNotas);
-
-        receta = new Receta(etNombre.getText().toString(),etHorah.getText().toString(), etHoram.getText().toString(),
-                etLapsod.getText().toString(),etLapsoh.getText().toString(), etLapsom.getText().toString(),
-                etDosis.getText().toString(), etDosisCantidad.getText().toString(),etNotas.getText().toString());
-        long receta_id=0;
-        receta_id = getIntent().getLongExtra("id_receta", receta_id);
-
-        dbconeccion.editarDatosReceta(receta_id, receta);
-        //Mensaje que avisa que se actualizo una Receta
-        context = getApplicationContext();
-        text = "Haz actualizado una Receta";
-        duration = Toast.LENGTH_SHORT;
-        toast = Toast.makeText(context, text, duration);
-        toast.show();
-        //Se refresca la actividad
-        refrescar= new Intent(this, MainActivity.class);
-        startActivity(refrescar);
-        this.finish();
-    }
-
-    /**
-     * Metodo onClick del boton eliminar donde se eliminara un elemento de la tabla Receta
-     * @param view
-     */
-    public void onClickEliminar(View view){
-        Receta receta;
-        Intent refrescar;
-        Context context;
-        CharSequence text;
-        int duration;
-        Toast toast;
-
-        long receta_idE=0;
-        receta_idE = getIntent().getLongExtra("id_receta", receta_idE);
-        dbconeccion.eliminarDatosReceta(receta_idE);
-        //Mensaje que avisa que se elimino una Receta
-        context = getApplicationContext();
-        text = "Haz eliminado una Receta";
-        duration = Toast.LENGTH_SHORT;
-        toast = Toast.makeText(context, text, duration);
-        toast.show();
-        //Se refresca la actividad
-        refrescar= new Intent(this, MainActivity.class);
-        startActivity(refrescar);
-        this.finish();
-    }
 
 }

@@ -2,13 +2,16 @@ package forge.pillstime;
 
 import android.content.Intent;
 import android.database.Cursor;
+import android.os.Parcelable;
 import android.support.v4.widget.SimpleCursorAdapter;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import forge.negocio.Receta;
@@ -19,10 +22,11 @@ import forge.persistencia.SQLControlador;
  *Actividad donde se muestra la informacion de la tabala Receta
  */
 public class RecetaBaseDatos extends AppCompatActivity {
+
     private TextView tv_recetaID, tv_recetaNombre, tv_recetaHora,tv_recetaMinuto ,tv_recetaLapsoDia,
             tv_recetaLapsoHora, tv_recetaLapsoMinuto, tv_recetaDosis,tv_recetaDosisCantidad , tv_recetaNotas;
 
-    private EditText etNombre2, etHorah2, etHoram2, etLapsod2, etLapsoh2, etLapsom2, etDosis2, etDosisCantidad2, etNotas2;
+    private EditText etNombre, etHorah, etHoram, etLapsod, etLapsoh, etLapsom, etDosis, etDosisCantidad, etNotas;
     private SQLControlador dbconeccion;
     private ListView listaReceta;
     private boolean bandera = false;
@@ -77,6 +81,7 @@ public class RecetaBaseDatos extends AppCompatActivity {
             SimpleCursorAdapter adapter = new SimpleCursorAdapter(this, R.layout.formato_listview, cursor, from, to);
             adapter.notifyDataSetChanged();
             listaReceta.setAdapter(adapter);
+
         }
         catch (Exception e){
 
@@ -88,8 +93,31 @@ public class RecetaBaseDatos extends AppCompatActivity {
                 /*Se crea un intent con el id del elemento seleccionado el cual
                   se envia a la actividad principal para poder ser modificado o eliminado
                 */
-                Intent intent = new Intent(RecetaBaseDatos.this, MainActivity.class);
+
+                tv_recetaID = (TextView) view.findViewById(R.id.receta_id);
+                tv_recetaNombre = (TextView) view.findViewById(R.id.receta_nombre);
+                tv_recetaHora = (TextView) view.findViewById(R.id.receta_hora);
+                tv_recetaMinuto = (TextView) view.findViewById(R.id.receta_minuto);
+                tv_recetaLapsoDia = (TextView) view.findViewById(R.id.receta_lapsodia);
+                tv_recetaLapsoHora = (TextView) view.findViewById(R.id.receta_lapsohora);
+                tv_recetaLapsoMinuto = (TextView) view.findViewById(R.id.receta_lapsominuto);
+                tv_recetaDosis = (TextView) view.findViewById(R.id.receta_dosis);
+                tv_recetaDosisCantidad = (TextView) view.findViewById(R.id.receta_dosiscantidad);
+                tv_recetaNotas = (TextView) view.findViewById(R.id.receta_notas);
+
+                Receta receta = new Receta(tv_recetaNombre.getText().toString(),
+                        tv_recetaHora.getText().toString(),
+                        tv_recetaMinuto.getText().toString(),
+                        tv_recetaLapsoDia.getText().toString(),
+                        tv_recetaLapsoHora.getText().toString(),
+                        tv_recetaLapsoMinuto.getText().toString(),
+                        tv_recetaDosis.getText().toString().toString(),
+                        tv_recetaDosisCantidad.getText().toString(),
+                        tv_recetaNotas.getText().toString());
+
+                Intent intent = new Intent(RecetaBaseDatos.this,FormularioRecetas.class);
                 intent.putExtra("id_receta", id);
+                intent.putExtra("recetaclick", receta);
                 startActivity(intent);
             }
         });

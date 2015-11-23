@@ -4,182 +4,31 @@
     android:layout_height="match_parent"
     android:weightSum="1">
 
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/verde"
+        android:id="@+id/btnAbrirFormulario"
+
+        android:onClick="onClickAbrirFormularioRecetas"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
     <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/scrollView"
-        android:fillViewport="true">
-
-    <RelativeLayout
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-
-
-        <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Nombre"
-        android:layout_centerHorizontal="true"
-        android:id="@+id/textView" />
+        android:id="@+id/scrollView3" >
 
-    <EditText
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:id="@+id/etRNombre"
-        android:layout_below="@+id/textView"
-        android:layout_centerHorizontal="true" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hora"
-        android:id="@+id/textView5"
-        android:layout_below="@+id/etRNombre"
-        android:layout_centerHorizontal="true" />
-
-    <EditText
-        android:layout_width="50dp"
-        android:layout_height="wrap_content"
-        android:inputType="time"
-        android:ems="10"
-        android:id="@+id/etRHorah"
-        android:layout_below="@+id/textView5"
-        android:layout_toLeftOf="@+id/textView"
-        android:layout_toStartOf="@+id/textView" />
-
-    <EditText
-        android:layout_width="50dp"
-        android:layout_height="wrap_content"
-        android:inputType="time"
-        android:ems="10"
-        android:id="@+id/etRHoram"
-        android:layout_below="@+id/textView5"
-        android:layout_toRightOf="@+id/textView"
-        android:layout_toEndOf="@+id/textView" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Lapso"
-        android:id="@+id/textView6"
-        android:layout_below="@+id/etRHorah"
-        android:layout_centerHorizontal="true" />
-
-    <EditText
-        android:layout_width="50dp"
-        android:layout_height="wrap_content"
-        android:inputType="time"
-        android:ems="10"
-        android:id="@+id/etRLapsoDias"
-        android:layout_below="@+id/textView6"
-        android:layout_toLeftOf="@+id/etRHorah"
-        android:layout_toStartOf="@+id/etRHorah" />
-
-    <EditText
-        android:layout_width="50dp"
-        android:layout_height="wrap_content"
-        android:inputType="time"
-        android:ems="10"
-        android:id="@+id/etRLapsoHora"
-        android:layout_alignTop="@+id/etRLapsoDias"
-        android:layout_toRightOf="@+id/etRHorah"
-        android:layout_toEndOf="@+id/etRHorah" />
-
-    <EditText
-        android:layout_width="50dp"
-        android:layout_height="wrap_content"
-        android:inputType="time"
-        android:ems="10"
-        android:id="@+id/etRLapsoMinuto"
-        android:layout_below="@+id/textView6"
-        android:layout_toRightOf="@+id/etRHoram"
-        android:layout_toEndOf="@+id/etRHoram" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Dosis"
-        android:id="@+id/textView7"
-        android:layout_below="@+id/etRLapsoHora"
-        android:layout_alignLeft="@+id/textView6"
-        android:layout_alignStart="@+id/textView6" />
-
-    <EditText
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:id="@+id/etRDosis"
-        android:layout_below="@+id/textView7"
-        android:layout_alignRight="@+id/etRNotas"
-        android:layout_alignEnd="@+id/etRNotas" />
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="100dp"
-        android:inputType="textMultiLine"
-        android:ems="10"
-        android:id="@+id/etRNotas"
-        android:layout_below="@+id/etRDosis"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="65dp"
-        android:hint="Notas" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Guardar"
-        android:id="@+id/btnGuardarReceta"
-        android:onClick="onClickGuardar"
-        android:layout_below="@+id/etRNotas"
-        android:layout_toLeftOf="@+id/etRDosis"
-        android:layout_toStartOf="@+id/etRDosis" />
-
-        <EditText
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/etRDosisCantidad"
-            android:layout_below="@+id/etRDosis"
-            android:layout_alignLeft="@+id/etRDosis"
-            android:layout_alignStart="@+id/etRDosis"
-            android:layout_alignRight="@+id/etRNotas"
-            android:layout_alignEnd="@+id/etRNotas" />
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Editar"
-            android:id="@+id/btnEditarReceta"
-            android:layout_alignTop="@+id/btnGuardarReceta"
-            android:layout_toRightOf="@+id/etRLapsoDias"
-            android:layout_toEndOf="@+id/etRLapsoDias"
-            android:nestedScrollingEnabled="false"
-            android:onClick="onClickEditar" />
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Eliminar"
-            android:id="@+id/btnEliminarReceta"
-            android:layout_alignTop="@+id/btnEditarReceta"
-            android:layout_alignLeft="@+id/etRHoram"
-            android:layout_alignStart="@+id/etRHoram"
-            android:onClick="onClickEliminar" />
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Ir a Base de Datos"
-            android:id="@+id/btnBaseRecetas"
-            android:layout_below="@+id/btnGuardarReceta"
-            android:layout_alignLeft="@+id/btnGuardarReceta"
-            android:layout_alignStart="@+id/btnGuardarReceta"
-            android:layout_alignRight="@+id/etRLapsoMinuto"
-            android:layout_alignEnd="@+id/etRLapsoMinuto"
-            android:onClick="onClickVoyBaseReceta" />
-
-    </RelativeLayout>
     </ScrollView>
 
+    <ListView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/listViewFMReceta"
+        android:layout_below="@+id/btnAbrirFormulario"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
 </RelativeLayout>
