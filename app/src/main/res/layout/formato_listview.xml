@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/receta_id"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        />
+
+    <TextView
+        android:id="@+id/receta_nombre"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:padding="15dp"
+        android:textSize="17sp"
+        android:textStyle="bold"
+        android:text="Nombre" />
+
+    <TextView
+        android:id="@+id/receta_hora"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:padding="15dp"
+        android:textSize="17sp"
+        android:textStyle="bold"
+        android:text="Hora" />
+
+    <TextView
+        android:id="@+id/receta_minuto"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:padding="15dp"
+        android:textSize="17sp"
+        android:textStyle="bold"
+        android:text="Minuto" />
+
+    <TextView
+        android:id="@+id/receta_lapsodia"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:padding="15dp"
+        android:textSize="17sp"
+        android:textStyle="bold"
+        android:text="LapsoDia" />
+
+    <TextView
+        android:id="@+id/receta_lapsohora"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:padding="15dp"
+        android:textSize="17sp"
+        android:textStyle="bold"
+        android:text="LapsoHora" />
+
+    <TextView
+        android:id="@+id/receta_lapsominuto"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:padding="15dp"
+        android:textSize="17sp"
+        android:textStyle="bold"
+        android:text="LapsoMinuto" />
+
+    <TextView
+        android:id="@+id/receta_dosis"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:padding="15dp"
+        android:textSize="17sp"
+        android:textStyle="bold"
+        android:text="Dosis" />
+
+    <TextView
+        android:id="@+id/receta_dosiscantidad"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:padding="15dp"
+        android:textSize="17sp"
+        android:textStyle="bold"
+        android:text="Dosis Cantidad" />
+
+    <TextView
+        android:id="@+id/receta_notas"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:padding="15dp"
+        android:textSize="17sp"
+        android:textStyle="bold"
+        android:text="Notas" />
+
+
+</LinearLayout>
