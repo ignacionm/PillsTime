@@ -1,0 +1,29 @@
+[33mcommit d7060907c03f14f4f0ce68e2f5cf58c423958cb6[m
+Author: Joverd <Joverd_M@hotmail.com>
+Date:   Thu Jan 7 09:38:08 2016 -0700
+
+     Commit prueba Readme
+
+[1mdiff --git a/Readme.txt b/Readme.txt[m
+[1mnew file mode 100644[m
+[1mindex 0000000..6f2ad7d[m
+[1m--- /dev/null[m
+[1m+++ b/Readme.txt[m
+[36m@@ -0,0 +1,2 @@[m
+[32m+[m[32mmodificado 1[m
+[32m+[m[32mmodificado 2df[m
+\ No newline at end of file[m
+
+[33mcommit 7a4341629e4e9108c7d9cd4dd330f083a2238203[m
+Author: Joverd <Joverd_M@hotmail.com>
+Date:   Thu Jan 7 09:37:11 2016 -0700
+
+    commit de prueba
+
+[1mdiff --git a/PillsTime b/PillsTime[m
+[1mnew file mode 160000[m
+[1mindex 0000000..9982bbd[m
+[1m--- /dev/null[m
+[1m+++ b/PillsTime[m
+[36m@@ -0,0 +1 @@[m
+[32m+[m[32mSubproject commit 9982bbdbeffa5bae243896edb1a45ff9ca3e24f5[m
