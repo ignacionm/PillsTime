@@ -4,6 +4,8 @@ import java.io.Serializable;
 
 /**
  * Clase que se simula el comportamiento de una receta
+ *
+ * 12se LALALALAL
  */
 @SuppressWarnings("serial")
 public class Receta implements Serializable{
