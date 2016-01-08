@@ -40,7 +40,6 @@ public class SQLControlador {
         dbhelper.close();
     }
 
-
     /**
      * Metodo que lee todos los datos de la tabla Receta y regresa un cursor con los datos leidos.
      * @return cursor con los datos
